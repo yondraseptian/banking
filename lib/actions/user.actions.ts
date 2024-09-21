@@ -7,12 +7,12 @@ import { parseStringify } from "../utils";
 
 export const signIn = async ({ email, password }: signInProps) => {
   try {
-    const { account } = await createSessionClient();
-
-    const response = await account.createEmailPasswordSession(
+    const { account } = await createAdminClient();
+    
+    const session = await account.createEmailPasswordSession(
         email, password
-    )
-    return parseStringify(response);
+    ) 
+    return parseStringify(session);
   } catch (error) {
     console.log("Error", error);
   }
